@@ -22,18 +22,18 @@ No IntelliJ IDEA, também é possível clicar com o botão direito em `src/test/
 
 ### Testes implementados (10 no total)
 
-| Classe | Tipo | Teste |
-|---|---|---|
-| `model/TarefaTest` | Unitário (JUnit 5) | `givenTituloNulo_whenCriarTarefa_thenLancarExcecao` |
-| | | `givenDescricaoNula_whenCriarTarefa_thenLancarExcecao` |
-| | | `givenDadosValidos_whenCriarTarefa_thenTarefaCriadaCorretamente` |
-| `service/TarefaServiceTest` | Unitário (Mockito) | `givenTarefaValida_whenCadastrar_thenSalvarTarefa` |
-| | | `givenTarefaExistente_whenBuscarPorId_thenRetornarResponse` |
-| | | `givenTarefaInexistente_whenBuscarPorId_thenLancarExcecao` |
-| `controller/TarefaControllerTest` | Unitário (Mockito + MockMvc standalone) | `givenTarefasExistentes_whenListar_thenRetornarStatus200` |
-| | | `givenTarefaInexistente_whenBuscarPorId_thenRetornarStatus404` |
-| `integration/TarefaIntegracaoTest` | Integração (`@SpringBootTest` + H2) | `givenTarefaValida_whenCadastrarPorPost_thenRetornar201ESalvarNoH2` |
-| | | `givenTarefaExistente_whenExcluirPorDelete_thenRetornar204ERemoverDoH2` |
+| Classe                             | Tipo                                    | Teste                                                                   |
+| ---------------------------------- | --------------------------------------- | ----------------------------------------------------------------------- |
+| `model/TarefaTest`                 | Unitário (JUnit 5)                      | `givenTituloNulo_whenCriarTarefa_thenLancarExcecao`                     |
+|                                    |                                         | `givenDescricaoNula_whenCriarTarefa_thenLancarExcecao`                  |
+|                                    |                                         | `givenDadosValidos_whenCriarTarefa_thenTarefaCriadaCorretamente`        |
+| `service/TarefaServiceTest`        | Unitário (Mockito)                      | `givenTarefaValida_whenCadastrar_thenSalvarTarefa`                      |
+|                                    |                                         | `givenTarefaExistente_whenBuscarPorId_thenRetornarResponse`             |
+|                                    |                                         | `givenTarefaInexistente_whenBuscarPorId_thenLancarExcecao`              |
+| `controller/TarefaControllerTest`  | Unitário (Mockito + MockMvc standalone) | `givenTarefasExistentes_whenListar_thenRetornarStatus200`               |
+|                                    |                                         | `givenTarefaInexistente_whenBuscarPorId_thenRetornarStatus404`          |
+| `integration/TarefaIntegracaoTest` | Integração (`@SpringBootTest` + H2)     | `givenTarefaValida_whenCadastrarPorPost_thenRetornar201ESalvarNoH2`     |
+|                                    |                                         | `givenTarefaExistente_whenExcluirPorDelete_thenRetornar204ERemoverDoH2` |
 
 ---
 
@@ -107,13 +107,13 @@ Exemplo de corpo JSON:
 
 ### Endpoints
 
-| Método | Rota | O que faz | Status de sucesso |
-|--------|------|-----------|-------------------|
-| GET | `/api/tarefas` | Lista todas | 200 |
-| GET | `/api/tarefas/{id}` | Busca por ID | 200 |
-| POST | `/api/tarefas` | Cria tarefa | 201 |
-| PUT | `/api/tarefas/{id}` | Atualiza tarefa | 200 |
-| DELETE | `/api/tarefas/{id}` | Exclui tarefa | 204 |
+| Método | Rota                | O que faz       | Status de sucesso |
+| ------ | ------------------- | --------------- | ----------------- |
+| GET    | `/api/tarefas`      | Lista todas     | 200               |
+| GET    | `/api/tarefas/{id}` | Busca por ID    | 200               |
+| POST   | `/api/tarefas`      | Cria tarefa     | 201               |
+| PUT    | `/api/tarefas/{id}` | Atualiza tarefa | 200               |
+| DELETE | `/api/tarefas/{id}` | Exclui tarefa   | 204               |
 
 Outros casos: ID inexistente retorna **404**; título ou descrição nulos no cadastro/atualização retornam **400**.
 
@@ -147,7 +147,6 @@ Quando uma tarefa não existe, o `ApiExceptionHandler` devolve **HTTP 404** com 
 ```
 
 O `timestamp` acima é ilustrativo e será gerado no momento da requisição. Para campos nulos, a resposta usa código `DADOS_INVALIDOS` e HTTP 400. Para JSON inválido, usa `JSON_INVALIDO` e HTTP 400. Não existem integrações externas, autenticação, frontend, Micrometer ou Health.
-
 
 ## 4. Executar os testes
 
@@ -199,3 +198,5 @@ src/test/java/br/com/ada/tarefas/
 Veja o documento `ENUNCIADO_Projeto_Final_Testes_Automatizados_I.pdf` incluído no projeto.
 
 Apresentação: **30/11/2026**, de **15 a 20 minutos por equipe**. Todos os testes desenvolvidos devem passar, e a equipe deve explicar cada classe e cada método de teste.
+
+Invoke-Item .\target\site\jacoco\index.html
